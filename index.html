@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello!</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="/script.js" defer></script>
+    <script src="https://unpkg.com/aframe-text-geometry-component/dist/aframe-text-geometry-component.min.js"></script> 
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.0.0/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@%5E3.2.x/dist/aframe-animation-component.min.js"></script>
+    
+    <script src = "components/Clickable.js"></script>
+    
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        
+        <!--3D models and materials !-->
+        
+        <a-asset-item id = "dumplingobj" src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Fdumpling.obj?1518569989161"></a-asset-item>
+        <a-asset-item id = "dumplingmtl" src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Fdumpling.mtl?1518569319123"></a-asset-item>
+
+        <a-asset-item id = "tapleobj" src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Ftable.obj?1518576279375"></a-asset-item>
+        <a-asset-item id = "taplemtl" src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Ftable.mtl?1518576279075"></a-asset-item>
+        
+        <a-asset-item id = "matobj" src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Fmat.obj?1518576279055"></a-asset-item>
+        
+        <a-asset-item id = "bookobj" src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Fbook.obj?1518584372716"></a-asset-item>
+        <a-asset-item id = "bookmtl" src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Fbook.mtl?1518584372446"></a-asset-item>
+
+
+        <a-asset-item id = "peelobj" src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Fpeel.obj?1518575079889"></a-asset-item>
+        <a-asset-item id = "peelmtl" src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Fpeel.mtl?1518574702299"></a-asset-item>
+        
+        <a-asset-item id = "bowobj" src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Fpeel.obj?1518575079889"></a-asset-item>
+        
+        <a-asset-item id = "panobj" src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Fpan.obj?1518575976231"></a-asset-item>
+        <a-asset-item id = "panmtl" src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Fpan.mtl?1518575974074"></a-asset-item>
+        
+        <a-asset-item id = "waterobj" src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Fwater.obj?1518575837670"></a-asset-item>
+        
+        <a-asset-item id = "lidobj" src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Flid.obj?1518575430790"></a-asset-item>
+        <a-asset-item id = "lidmtl" src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Flid.mtl?1518575430690"></a-asset-item>
+        
+        <a-asset-item id = "onionsobj" src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Fonions.obj?1518579183283"></a-asset-item>
+        <a-asset-item id = "onionsmtl" src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Fonions.mtl?1518579183407"></a-asset-item>
+
+        <!--2D images/textures !-->
+        <a-image id = "grandma" src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Flaolao.jpeg?1518561636513"></a-image>
+        <a-image id = "sky" src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Fsky2.jpg?1518570715399"></a-image>
+        
+        <!-- sounds!-->
+        <a-sound id = "bloop" 
+                 src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2FSinglebloop.mp3?1518603776926"
+                 volume = "3"
+                 loop = "false"
+                 autoplay = "false"></a-sound>
+        
+        <a-sound id = "page"
+                 src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Fpage.mp3?1518605469256"
+                 volume = "5"
+                 loop = "false"
+                 autoplay = "false"></a-sound>
+        
+        <a-sound id = "boil"
+                 src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Fboil.mp3?1518605707032"
+                 volume = "5"
+                 loop = "true"
+                 autoplay = "true"></a-sound>
+        
+        <!--videos !-->
+        <video muted id="vid" src="https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Fcut%20dumpling.mp4?1518565263204" 
+                crossorigin="anonymous"
+                loop
+                autoplay = "true" 
+                style="display: none"></video>
+      </a-assets>
+      
+      <a-entity class = "dumpling"
+                obj-model = "obj:#dumplingobj;mtl:#dumplingmtl"
+                position = "3.761 12.195 -1.109"
+                rotation = "0 54.087 0">
+        
+        <a-sound 
+               src = "https://cdn.glitch.com/0ecd20b7-1836-4a3c-9a89-0929ee917e78%2Fmakingdumplings_edit1.mp3?1518600744620"
+               autoplay = "true" 
+               volume = "45"></a-sound>
+        
+      
+      </a-entity>
+      
+        <a-entity class = "peel"
+                  folddumpling
+                  dynamic-body="mass: 2"
+                  obj-model = "obj:#peelobj"
+                  material = "color:#FEF8E1"
+                  position = "-1 14 2"
+                  rotation = "0 45 0"
+                  sound = "#bloop">
+        </a-entity>
+
+        <a-entity id = "book"
+                  openbook
+                  obj-model = "obj:#bookobj;mtl:#bookmtl"
+                  position = "-7.467 12.552 2.990"
+                  rotation = "0 -50.649 0"
+                  sound = "#page">
+        </a-entity>
+
+        <a-entity id = "table"
+                  shadow="receive: true; cast:true"
+                  obj-model = "obj:#tapleobj;mtl:#taplemtl"
+                  position = "0 2.758 0"
+                  rotation = "0 -90 0"
+                  static-body = "sphereRadius: NaN">
+           <a-entity id = "mat"
+                     shadow="receive: true; cast:true;"
+                     obj-model = "obj:#matobj"
+                     material = "color: #D9D9D9"
+                     position = "0 0 0"
+                     rotation = "0 0 0"
+                     static-body = "sphereRadius: NaN">
+          </a-entity>
+        </a-entity>
+
+        <a-entity id = "pan"
+                  shadow="receive: true; cast:true"
+                  obj-model = "obj:#panobj;mtl:#panmtl"
+                  position = "7.527 11.982 0.352"
+                  rotation = "0 -90 0">
+          <a-entity id = "water"
+                    obj-model = "obj:#waterobj"
+                    material = "color:#FAF4DB;opacity:0.340;transparent:true"
+                    position = "0 0 0"
+                    rotation = "0 0 0">
+             <a-entity id = "onions"
+                       obj-model = "obj:#onionsobj;mtl:#onionsmtl"
+                       position = "0 0 0"
+                       rotation = "0 0 0"
+                       animation = "property: position; dir: alternate; dur: 1000;
+                                   easing: easeInSine; loop: true; to: 0 -0.2 0"
+                       sound = "#boil"
+                       >
+               
+            </a-entity> 
+          </a-entity>     
+        </a-entity>
+
+         <a-entity id = "lid"
+                  obj-model = "obj:#lidobj;mtl:#lidmtl"
+                  position = "7.332 12.212 4.365"
+                  rotation = "0 0 0">
+          </a-entity>
+
+         <a-entity geometry="primitive: sphere;
+                        radius: 5000;
+                        segmentsWidth: 64;
+                        segmentsHeight: 64"
+                   position = "0  2000 0"
+                   rotation = "0 -90 0 "
+
+                   material="shader: flat; src: #vid;opacity:0"
+                   animation = "property: material.opacity;delay:118000;to:1;dir:normal;dur:5000"
+
+              scale="-1 1 1"></a-entity>
+      <!-- environmental !-->
+     
+      
+      <a-entity id = "ambience"
+                position = "-6.606 27.871 -6.572"
+                geometry = "primitive: sphere;
+                            radius: 3;"
+                material = "visible:false"
+                light = "color: #fff0d5; 
+                         castShadow:true;
+                         angle: 60
+                         decay: 10; 
+                         intensity: 0.5; 
+                         penumbra: 0.5; 
+                         type: ambient"
+                ></a-entity>
+      
+      <a-entity id = "key"
+                
+                position = "19.056 33.554 15.433"
+                rotation = "-48.93 9.855 -17.303"
+                geometry = "primitive: sphere;
+                            radius: 3;"
+                material = "visible:false"
+                light = "color: #fef0cf; 
+                         castShadow:true;
+                         angle: 60
+                         decay: 10; 
+                         intensity:1; 
+                         penumbra: 0.5; 
+                         type: spot;
+                         shadowCameraVisible: true"
+                ></a-entity>
+      
+      <a-camera 
+      id="camera"
+      position="0 16 10">
+        <a-cursor>
+          
+        </a-cursor>
+      </a-camera>
+      
+      <a-entity
+                geometry = "primitive: sphere;
+                            radius:3000
+                            segmentsWidth: 64;
+                            segmentsHeight: 64"                        
+               material = "opacity:1;src:#sky;shader:flat;side:back"
+               animation = "property: material.opacity;delay:113000;to:0;dir:normal;dur:4000">
+      </a-entity>
+
+    </a-scene>
+    
+    
+    
+    
+  </body>
+</html>
